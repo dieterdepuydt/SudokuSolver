@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sudoku Solver</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.js" type="text/javascript"></script>
+	<script src="sudoku.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+  
+  
+ <div class="jumbotron">
+      <div class="container">
+        <h1>Sudoku Solver</h1>
+        <p>This little program, written in jQuery/Javascript (with a flavor of HTML5) solves SUDOKU's, using the (inefficient) backtrack algorithm.
+		</p>
+        <p><a href="mailto:dieter@depuydt.eu" class="btn btn-primary btn-lg" role="button">Contact me for more info &raquo;</a></p>
+      </div>
+    </div>
+
+ <div class="row">
+ <div class="container">
+	<div class="col-md-8">
+    <table id="sudoku_table">
+      <tr>
+        <td><div id="cel00"></div></td>
+        <td><div id="cel01"></div></td>
+        <td class="fatright"><div id="cel02"></div></td>
+        <td><div id="cel03"></div></td>
+        <td><div id="cel04"></div></td>
+        <td class="fatright"><div id="cel05"></div></td>
+        <td><div id="cel06"></div></td>
+        <td><div id="cel07"></div></td>
+        <td><div id="cel08"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel10"></div></td>
+        <td><div id="cel11"></div></td>
+        <td class="fatright"><div id="cel12"></div></td>
+        <td><div id="cel13"></div></td>
+        <td><div id="cel14"></div></td>
+        <td class="fatright"><div id="cel15"></div></td>
+        <td><div id="cel16"></div></td>
+        <td><div id="cel17"></div></td>
+        <td><div id="cel18"></div></td>
+      </tr>
+      <tr class="fatbottom">
+        <td><div id="cel20"></div></td>
+        <td><div id="cel21"></div></td>
+        <td class="fatright"><div id="cel22"></div></td>
+        <td><div id="cel23"></div></td>
+        <td><div id="cel24"></div></td>
+        <td class="fatright"><div id="cel25"></div></td>
+        <td><div id="cel26"></div></td>
+        <td><div id="cel27"></div></td>
+        <td><div id="cel28"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel30"></div></td>
+        <td><div id="cel31"></div></td>
+        <td class="fatright"><div id="cel32"></div></td>
+        <td><div id="cel33"></div></td>
+        <td><div id="cel34"></div></td>
+        <td class="fatright"><div id="cel35"></div></td>
+        <td><div id="cel36"></div></td>
+        <td><div id="cel37"></div></td>
+        <td><div id="cel38"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel40"></div></td>
+        <td><div id="cel41"></div></td>
+        <td class="fatright"><div id="cel42"></div></td>
+        <td><div id="cel43"></div></td>
+        <td><div id="cel44"></div></td>
+        <td class="fatright"><div id="cel45"></div></td>
+        <td><div id="cel46"></div></td>
+        <td><div id="cel47"></div></td>
+        <td><div id="cel48"></div></td>
+      </tr>
+      <tr class="fatbottom">
+        <td><div id="cel50"></div></td>
+        <td><div id="cel51"></div></td>
+        <td class="fatright"><div id="cel52"></div></td>
+        <td><div id="cel53"></div></td>
+        <td><div id="cel54"></div></td>
+        <td class="fatright"><div id="cel55"></div></td>
+        <td><div id="cel56"></div></td>
+        <td><div id="cel57"></div></td>
+        <td><div id="cel58"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel60"></div></td>
+        <td><div id="cel61"></div></td>
+        <td class="fatright"><div id="cel62"></div></td>
+        <td><div id="cel63"></div></td>
+        <td><div id="cel64"></div></td>
+        <td class="fatright"><div id="cel65"></div></td>
+        <td><div id="cel66"></div></td>
+        <td><div id="cel67"></div></td>
+        <td><div id="cel68"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel70"></div></td>
+        <td><div id="cel71"></div></td>
+        <td class="fatright"><div id="cel72"></div></td>
+        <td><div id="cel73"></div></td>
+        <td><div id="cel74"></div></td>
+        <td class="fatright"><div id="cel75"></div></td>
+        <td><div id="cel76"></div></td>
+        <td><div id="cel77"></div></td>
+        <td><div id="cel78"></div></td>
+      </tr>
+      <tr>
+        <td><div id="cel80"></div></td>
+        <td><div id="cel81"></div></td>
+        <td class="fatright"><div id="cel82"></div></td>
+        <td><div id="cel83"></div></td>
+        <td><div id="cel84"></div></td>
+        <td class="fatright"><div id="cel85"></div></td>
+        <td><div id="cel86"></div></td>
+        <td><div id="cel87"></div></td>
+        <td><div id="cel88"></div></td>
+      </tr>
+    </table>
+	</div>
+	<div class="col-md-4">
+	<div class="panel panel-default">
+	<div class="panel-heading">Help?!</div>
+	<div class="panel-body">
+		<ul>
+		<li>Click a square to select it and enter a number.
+		<li>The next square will be activated automatically.
+		<li>Enter a new number or enter a space to leave the square empty and activate the next square.
+		<li>To change the content of a square, activate the square and enter the new number (or use space to make the square empty).
+		<li>Click "Solve!" to solve the puzzle.
+		</ul>
+	  
+	   <span class="btn btn-primary btn-lg" id="go">Solve !</span><br /><br />
+	  <span class="btn btn-primary btn-lg" id="reset">Start all over again !</span>
+	  </div>
+	  </div>
+  </div>
+  </div>
+  </div>
+  
+  </body>
+</html>
